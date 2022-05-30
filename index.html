@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="darkModeSection">
+        <div id="my-react-component">
+        </div>
+        <script type="text/babel">
+            class MyReactButton extends React.Component {
+                constructor(props){
+                    super(props);
+                    this.state = { pressed: false };
+                }
+                render() {
+                    const text = this.state.pressed? 'Light Mode' : 'Dark Mode';
+                    const button = this.state.pressed? 'btn-dark' : 'btn-light';
+                    const theme = this.state.pressed? 'dark' : 'light';
+                    return(
+                        <React.Fragment>
+                            <div class={theme}>
+                                <div class="container">
+                                    <h1>Dark Mode Example</h1>
+                                    <p>This is and example about, How to change my site to dark mode?</p>
+                                    <p>Using my knowledge in React and JavaScript</p>
+                                    <p class="smaller-font">By Ana Picado</p>
+                                </div>
+                            </div>
+
+                        <button 
+                            type="button"
+                            class={button}
+                            onClick={() => this.setState({ pressed: !this.state.pressed })}
+                        >
+                            {text}
+                        </button>
+                        </React.Fragment>
+                    );
+                }
+            }
+            ReactDOM.render(<MyReactButton />, document.getElementById("my-react-component"));
+        </script>
+    </div> 
+</body>
+</html>
